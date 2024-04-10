@@ -1,6 +1,7 @@
 <launch>
     <!--Got initial bag parameters by using pause option when launching bag -->
-    <param name="lat_r" value="45.477669461666665"/> 
-    <param name="lon_r" value="9.22674018"/>
-    <param name="alt_r" value="169.039"/>
+    <!--Remember to add parameter type (double), otherwise it won't work-->
+    <param name="lat_r" type="double" value="45.477669461666665"/> 
+    <param name="lon_r" type="double" value="9.22674018"/>
+    <param name="alt_r" type="double" value="169.039"/>
 </launch>
