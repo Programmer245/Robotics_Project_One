@@ -14,7 +14,6 @@
 class pub_sub {
     private:
         ros::NodeHandle n;
-
         ros::Subscriber sub;
         ros::Publisher pub;
     public:
