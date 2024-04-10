@@ -1,6 +1,6 @@
 #include <ros/ros.h>
-#include "nav_msgs/Odometry"
-#include <tf/transform_listener.h>
+#include "nav_msgs/Odometry.h"
+#include <tf/transform_broadcaster.h>
 
 class tf_sub_pub {
     private:
@@ -16,7 +16,7 @@ class tf_sub_pub {
             tf::Transform transform;
             // TODO
         }
-    }
+};
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "odom_to_tf");
