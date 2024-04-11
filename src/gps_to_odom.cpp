@@ -17,7 +17,7 @@
 
 double a = 6378137; // Equatorial radius in m
 double b = 6356752; // Polar radius in m
-double e_square = 1-pow(a/b,2); // First numerical eccentricity
+double e_square = 1-pow((double)(b/a),2); // First numerical eccentricity
 
 class pub_sub {
     private:
