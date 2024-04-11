@@ -15,7 +15,7 @@
 #include <cmath>
 #include <tf/transform_datatypes.h>
 
-void callback(const sensor_msgs::NavSatFix::ConstPtr &data); 
+void callback(const sensor_msgs::NavSatFix::ConstPtr &data); // Function prototypes
 std::array<double, 3> AltLonLatToECEF(double alt, double lon, double lat); 
 std::array<double, 3> ECEFToENU(double X, double Y, double Z); 
 double N(double phi); 
@@ -28,12 +28,12 @@ std::array<double, 3> initialECEF; // Stores the initial X,Y,Z ECEF coordinates 
 std::array<double, 3> initialAltLonLat; // Stores the initial altitude (meters), longitude (radians), and latitude (radians) of the robot 
 std::array<double, 3> oldENU; // Stores the X,Y,Z ENU coordinates of the previous position in meters
 
+ros::Subscriber sub;
+ros::Publisher pub;
+
 int main(int argc, char **argv) {
     ros::init(argc, argv, "gps_to_odom"); // Initialize new ROS node named "gps_to_odom"
-    ros::NodeHandle n;
-
-    ros::Subscriber sub;
-    ros::Publisher pub;
+    ros::NodeHandle n; // Had to define them outside, otherwise, other functions won't be able to access them
 
     n.getParam("alt_r", initialAltLonLat[0]); // Read initial alt, lon, lat parameters stored in launch file
     n.getParam("lon_r", initialAltLonLat[1]);
@@ -75,17 +75,15 @@ void callback(const sensor_msgs::NavSatFix::ConstPtr &data) {
     double theta = atan2(newCoordinatesENU[1]-oldENU[1],newCoordinatesENU[0]-oldENU[0]); 
     ROS_INFO("Heading: %lf", theta);
 
-    /*
     tf::Quaternion q; // Create tf quaternion
     q.setRPY(0, 0, theta); // Set orientation of quaternion
 
-    geometry_msgs::Quaternion q2; // Create other type of quaternion
-    quaternionMsgToTF(q2, q); // Create geometry_msgs quaternion from tf quaternion
-
-    odom_msg.pose.pose.orientation = q2;
+    odom_msg.pose.pose.orientation.x = q.getX();
+    odom_msg.pose.pose.orientation.y = q.getY();
+    odom_msg.pose.pose.orientation.z = q.getZ();
+    odom_msg.pose.pose.orientation.w = q.getW();
 
     pub.publish(odom_msg);
-    */
 
     oldENU = newCoordinatesENU; // We update the previous ENU
 }
