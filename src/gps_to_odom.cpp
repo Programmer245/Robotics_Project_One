@@ -53,7 +53,7 @@ class pub_sub {
 
             // Need to set orientation (turtle strat)
 
-            double theta = atan((newCoordinatesENU[1]-oldENU[1])/(newCoordinatesENU[0]-oldENU[0])); // Calculates the heading by look at the previous and current position
+            double theta = atan2(newCoordinatesENU[1]-oldENU[1],newCoordinatesENU[0]-oldENU[0]); // Calculates the heading by look at the previous and current position
             ROS_INFO("Heading: %lf", theta);
 
             /*
