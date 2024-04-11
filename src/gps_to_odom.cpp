@@ -77,7 +77,7 @@ class pub_sub {
 
             std::array<double, 3> res;
 
-            double latRad = lat * M_PI/180;
+            double latRad = lat * M_PI/180; // Convert to radians
             double lonRad = lon * M_PI/180;
 
             double nResult = N(latRad);
@@ -99,10 +99,12 @@ class pub_sub {
             double deltaX = X-initialECEF[0]; // Xp - Xr
             double deltaY = Y-initialECEF[1];
             double deltaZ = Z-initialECEF[2];
+            double lonRad = initialAltLonLat[1]* M_PI/180; // Convert to radians
+            double latRad = initialAltLonLat[2]* M_PI/180;
 
-            res[0] = -sin(initialAltLonLat[1])*deltaX + cos(initialAltLonLat[1])*deltaY;
-            res[1] = -sin(initialAltLonLat[2])*cos(initialAltLonLat[1])*deltaX - sin(initialAltLonLat[2])*sin(initialAltLonLat[1])*deltaY + cos(initialAltLonLat[2])*deltaZ;
-            res[2] = cos(initialAltLonLat[2])*cos(initialAltLonLat[1])*deltaX + cos(initialAltLonLat[2])*sin(initialAltLonLat[1])*deltaY + sin(initialAltLonLat[2])*deltaZ;
+            res[0] = -sin(lonRad)*deltaX + cos(lonRad)*deltaY;
+            res[1] = -sin(latRad)*cos(lonRad)*deltaX - sin(latRad)*sin(lonRad)*deltaY + cos(latRad)*deltaZ;
+            res[2] = cos(latRad)*cos(lonRad)*deltaX + cos(latRad)*sin(lonRad)*deltaY + sin(latRad)*deltaZ;
 
             ROS_INFO("Converted parameters in ECEFToENU: X: %lf, Y: %lf, Z: %lf", res[0], res[1], res[2]); // TODO: Must delete
 
