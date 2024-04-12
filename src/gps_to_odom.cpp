@@ -17,7 +17,7 @@
 
 const double a = 6378137; // Equatorial radius in m
 const double b = 6356752; // Polar radius in m
-const double e_square = 1-pow(double b/a,2); // First numerical eccentricity
+const double e_square = 1-pow((double) b/a,2); // First numerical eccentricity
 
 class pub_sub {
     private:
