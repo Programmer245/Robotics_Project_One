@@ -1,7 +1,9 @@
 <launch>
     <!--Got initial bag parameters by using pause option when launching bag -->
     <!--Remember to add parameter type (double), otherwise it won't work-->
-    <param name="lat_r" type="double" value="45.477669461666665"/> 
+    <param name="lat_r" type="double" value="45.477669461666665"/>
     <param name="lon_r" type="double" value="9.22674018"/>
     <param name="alt_r" type="double" value="169.039"/>
+    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_wheel" args="world wheel_odom"/>
+    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_gps" args="world gps_odom"/>
 </launch>

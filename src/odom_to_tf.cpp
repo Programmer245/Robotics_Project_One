@@ -1,6 +1,9 @@
 #include <ros/ros.h>
 #include "nav_msgs/Odometry.h"
 #include <tf/transform_broadcaster.h>
+#include <string>
+
+
 
 class tf_sub_pub {
     private:
@@ -8,7 +11,8 @@ class tf_sub_pub {
         tf::TransformBroadcaster br;
         ros::Subscriber sub;
     public:
-        tf_sub_pub() {
+        tf_sub_pub(char* root_frame, char* child_frame) {
+			ROS_INFO("String %s", root_frame);
             sub = n.subscribe("/input_odom", 1000, &tf_sub_pub::callback, this);
         }
 
@@ -20,7 +24,7 @@ class tf_sub_pub {
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "odom_to_tf");
-    tf_sub_pub my_tf_sub_pub;
+    tf_sub_pub my_tf_sub_pub(argv[1], argv[2]);
     ros::spin();
     return 0;
 }
