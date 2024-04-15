@@ -90,8 +90,6 @@ class pub_sub {
          * @return An array of 3 doubles containing the X,Y,Z ECEF coordinates
         */
         std::array<double, 3> AltLonLatToECEF(double alt, double lon, double lat) {
-            ROS_INFO("Received parameters in AltLonLatToECEF: alt: %lf, long: %lf, lat: %lf", alt, lon, lat); // TODO: Must delete
-
             std::array<double, 3> res; // Allocate new array of doubles in heap
 
             double lonRad = lon * M_PI/180; // Convert to radians
@@ -118,8 +116,6 @@ class pub_sub {
          * @return An array of 3 doubles containing the X, Y, Z ENU coordinates
         */
         std::array<double, 3> ECEFToENU(double X, double Y, double Z) {
-            ROS_INFO("Received parameters in ECEFToENU: X: %lf, Y: %lf, Z: %lf", X, Y, Z); // TODO: Must delete
-
             std::array<double, 3> res; // Allocate new array of doubles in heap
 
             double deltaX = X-initialECEF[0]; // Xp - Xr
