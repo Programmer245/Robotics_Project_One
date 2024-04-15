@@ -25,6 +25,7 @@ class tf_sub_pub {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "odom_to_tf");
     tf_sub_pub my_tf_sub_pub(argv[1], argv[2]);
+	ROS_INFO("Hello");
     ros::spin();
     return 0;
 }
