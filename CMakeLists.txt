@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(first_project)
 
 ## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp nav_msgs sensor_msgs tf)
+find_package(catkin REQUIRED COMPONENTS roscpp nav_msgs std_msgs sensor_msgs tf)
 
 ## Declare a catkin package
 catkin_package()

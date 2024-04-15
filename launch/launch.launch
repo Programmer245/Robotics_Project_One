@@ -4,6 +4,6 @@
     <param name="lat_r" type="double" value="45.477669461666665"/>
     <param name="lon_r" type="double" value="9.22674018"/>
     <param name="alt_r" type="double" value="169.039"/>
-    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_wheel" args="world wheel_odom"/>
-    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_gps" args="world gps_odom"/>
+    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_wheel" args="world wheel_odom" output = "screen"/>
+    <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_gps" args="world gps_odom" output = "screen"/>
 </launch>

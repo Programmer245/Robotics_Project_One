@@ -11,8 +11,8 @@ class tf_sub_pub {
         tf::TransformBroadcaster br;
         ros::Subscriber sub;
     public:
-        tf_sub_pub(char* root_frame, char* child_frame) {
-			ROS_INFO("String %s", root_frame);
+        tf_sub_pub(char * root_frame, char * child_frame ) {
+			ROS_INFO("Root frame : %s, Child frame : %s", root_frame, child_frame);
             sub = n.subscribe("/input_odom", 1000, &tf_sub_pub::callback, this);
         }
 
@@ -25,7 +25,6 @@ class tf_sub_pub {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "odom_to_tf");
     tf_sub_pub my_tf_sub_pub(argv[1], argv[2]);
-	ROS_INFO("Hello");
     ros::spin();
     return 0;
 }
