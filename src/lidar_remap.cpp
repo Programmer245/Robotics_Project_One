@@ -45,7 +45,7 @@ class lidar_pub_sub {
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "lidar_remap");
-
+    lidar_pub_sub my_lidar_pub_sub;
     ROS_INFO("Spinning node");
     ros::spin();
     return 0;
