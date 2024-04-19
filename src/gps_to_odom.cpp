@@ -124,6 +124,11 @@ class pub_sub {
             res[0] = -sin(initialAltLonLat[1])*deltaX + cos(initialAltLonLat[1])*deltaY;
             res[1] = -sin(initialAltLonLat[2])*cos(initialAltLonLat[1])*deltaX - sin(initialAltLonLat[2])*sin(initialAltLonLat[1])*deltaY + cos(initialAltLonLat[2])*deltaZ;
             res[2] = cos(initialAltLonLat[2])*cos(initialAltLonLat[1])*deltaX + cos(initialAltLonLat[2])*sin(initialAltLonLat[1])*deltaY + sin(initialAltLonLat[2])*deltaZ;
+            // rotation matrix
+            double tempX= res[0];
+            double tempY= res[1];
+            res[0]= tempX*cos(130*M_PI/180)-tempY*sin(130*M_PI/180);
+            res[1]= tempX*sin(130*M_PI/180)+tempY*cos(130*M_PI/180);
 
             return res; // Contains ENU coordinates
         }
