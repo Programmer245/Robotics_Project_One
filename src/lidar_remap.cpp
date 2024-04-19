@@ -30,7 +30,7 @@ class lidar_pub_sub {
             //Todo
             ROS_INFO ("Good Evening!");
         }
-        void static callbackParameter(first_project::parametersConfig &config, uint32_t level) {
+        static void callbackParameter(first_project::parametersConfig &config, uint32_t level) {
             /*ROS_INFO("Reconfigure Request: %d %f %s %s %d",
                       config.int_param, config.double_param,
                       config.str_param.c_str(),
