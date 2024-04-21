@@ -3,11 +3,11 @@
  * Subscribes to /os_cloud_node/points to get lidar data as sensor_msgs/PointCloud2 objects.
  * Changes header of sensor_msgs/PointCloud2 object.
  * Publishes updated data to /pointcloud_remapped
- * 
+ *
  * Useful links:
  * https://medium.com/@tonyjacob_/pointcloud2-message-explained-853bd9907743
  * http://wiki.ros.org/dynamic_reconfigure/Tutorials/HowToWriteYourFirstCfgFile
- * 
+ *
  * @author anto, abdo, jie
 */
 
@@ -31,7 +31,7 @@ class lidar_pub_sub {
             pub = n.advertise<sensor_msgs::PointCloud2>("/pointcloud_remapped", 1);
         }
         void callback(const sensor_msgs::PointCloud2::ConstPtr &data) {
-            sensor_msgs::PointCloud2 new_msg; 
+            sensor_msgs::PointCloud2 new_msg;
 
             new_msg.header.seq = data->header.seq;
             new_msg.header.stamp = data->header.stamp;
@@ -52,7 +52,7 @@ class lidar_pub_sub {
 
 void callbackParameter(first_project::parametersConfig &config, uint32_t level) {
     framePar = config.frame;
-    ROS_INFO("Parameter change: %s", config.frame.c_str());
+    ROS_INFO("Parameter change: %s", framePar.c_str());
 }
 
 int main(int argc, char **argv) {

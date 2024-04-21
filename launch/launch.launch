@@ -5,10 +5,21 @@
     <param name="lon_r" type="double" value="9.22674018"/>
     <param name="alt_r" type="double" value="169.039"/>
 
+
+    <node pkg="first_project" type="gps_to_odom" name="gps_to_odom" output="screen">
+    </node>
+
     <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_wheel" args="world wheel_odom" output="screen">
         <remap from="/input_odom" to="/odom"/>
     </node>
+
     <node pkg="first_project" type="odom_to_tf" name="odom_to_tf_gps" args="world gps_odom" output="screen">
         <remap from="/input_odom" to="/gps_odom"/>
+    </node>
+
+    <node pkg="first_project" type="lidar_remap" name="lidar_remap" output="screen">
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz">
     </node>
 </launch>
