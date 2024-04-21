@@ -65,8 +65,8 @@ class pub_sub {
             // Calculates the heading in radians by looking at the current and previous position
             // Note that theta is in interval [-pi, pi]
             double theta = atan2(newCoordinatesENU[1]-oldENU[1],newCoordinatesENU[0]-oldENU[0]); 
-            ROS_INFO("Received LLA data: \n\tAlt: %lf, Lon: %lf, Lat: %lf\n\tECEFX: %lf ECEFY: %lf EFECZ: %lf\n\tENUX: %lf, ENUY: %lf, ENUZ: %lf\n\tHeading: %lf", 
-            data->altitude, data->longitude, data->latitude, newCoordinatesECEF[0], newCoordinatesECEF[1], newCoordinatesECEF[2], newCoordinatesENU[0], newCoordinatesENU[1], newCoordinatesENU[2], theta); // TODO: Must delete
+            // ROS_INFO("Received LLA data: \n\tAlt: %lf, Lon: %lf, Lat: %lf\n\tECEFX: %lf ECEFY: %lf EFECZ: %lf\n\tENUX: %lf, ENUY: %lf, ENUZ: %lf\n\tHeading: %lf", 
+            // data->altitude, data->longitude, data->latitude, newCoordinatesECEF[0], newCoordinatesECEF[1], newCoordinatesECEF[2], newCoordinatesENU[0], newCoordinatesENU[1], newCoordinatesENU[2], theta); // TODO: Must delete
 
             tf::Quaternion q; // Create tf quaternion
             q.setRPY(0, 0, theta); // Set orientation of quaternion

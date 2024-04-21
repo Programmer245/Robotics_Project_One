@@ -52,7 +52,7 @@ class lidar_pub_sub {
 
 void callbackParameter(first_project::parametersConfig &config, uint32_t level) {
     framePar = config.frame;
-    ROS_INFO("Parameter change: %s", framePar.c_str());
+    // ROS_INFO("Parameter change: %s", framePar.c_str());
 }
 
 int main(int argc, char **argv) {

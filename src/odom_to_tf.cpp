@@ -25,7 +25,7 @@ class tf_sub_pub {
         tf_sub_pub(std::string *s1, std::string *s2) {
             root_frame = s1;
             child_frame = s2;
-			ROS_INFO("Launched node with root frame : %s, child frame : %s", (*root_frame).c_str(), (*child_frame).c_str()); 
+			// ROS_INFO("Launched node with root frame : %s, child frame : %s", (*root_frame).c_str(), (*child_frame).c_str()); 
             sub = n.subscribe("/input_odom", 1000, &tf_sub_pub::callback, this);
         }
 
@@ -37,7 +37,7 @@ class tf_sub_pub {
             tf::Pose pose; // Get the yaw from the odometry message: https://answers.ros.org/question/41233/how-to-understand-robot-orientation-from-quaternion-yaw-angle/
             tf::poseMsgToTF(data->pose.pose, pose);
             double yaw_angle = tf::getYaw(pose.getRotation());
-            ROS_INFO("Yaw: %lf", yaw_angle);
+            // ROS_INFO("Yaw: %lf", yaw_angle);
 
             q.setRPY(0, 0, yaw_angle);
             transform.setRotation(q);
