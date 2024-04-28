@@ -34,7 +34,7 @@ class lidar_pub_sub {
             sensor_msgs::PointCloud2 new_msg;
 
             new_msg.header.seq = data->header.seq;
-            new_msg.header.stamp = data->header.stamp;
+            new_msg.header.stamp = ros::Time::now(); // Update header timestamp to current time
             new_msg.header.frame_id = framePar;
 
             new_msg.height = data->height;
