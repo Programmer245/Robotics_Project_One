@@ -20,6 +20,9 @@
     <node pkg="first_project" type="lidar_remap" name="lidar_remap" output="screen">
     </node>
 
-    <node pkg="rviz" type="rviz" name="rviz">
+    <node pkg="rviz" type="rviz" name="rviz" args="-f world -d $(find first_project)/cfg/rviz_config.rviz">
+    </node>
+
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure">
     </node>
 </launch>
